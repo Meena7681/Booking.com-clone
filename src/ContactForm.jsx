@@ -21,37 +21,40 @@ const ContactForm = () => {
   };
 
  const handleSubmit= async (e)=> {
+   console.log(formDetails);
    e.preventDefault();
    setButtonText("Sending...");
    let response = await fetch("/api/contact",{
    method: "POST",
    headers: {
-       "Content-Type": "application/json;charset=utf-8"
+       "Content-Type": "application/json;charset=utf-8",
    },
    body: JSON.stringify(formDetails)
    });
 
+
    let result = await response.json();
    setButtonText("Send");
    setFormDetails(formInitialDetails);
-   if(result.status == 200){
-     setStatus({success: true,message: "Message sent successfully"});
+   if(result.code === 200){
+     setStatus({
+      success: true, 
+      message: "Message sent successfully"});
    }
    else{
-     setStatus({success: false,message: "Something went wrong, please try again latter"});
+     setStatus({
+      success: false,
+      message: "Something went wrong, please try again latter"});
    }
- }
-
-
-
-
+ };
 
   return (
-    <div className="form-container">
-      <h1>Contact Us</h1>
-      <p>We're here to help if you have any questions</p>
-      <form className="form-inner" onSubmit={handleSubmit>
-        <div className="row">
+     <>
+       <div className="form-container">
+         <h1>Contact Us</h1>
+         <p>We're here to help if you have any questions</p>
+         <form className="form-inner" onSubmit={handleSubmit}>
+         <div className="row">
           <input
             type="text"
             value={formDetails.firstName}
@@ -65,7 +68,7 @@ const ContactForm = () => {
             onChange={(e) => onFormUpdate("lastName", e.target.value)}
           />
         </div>
-        <div className="row">
+        <div className=" row ">
           <input
             type="email"
             value={formDetails.email}
@@ -87,17 +90,17 @@ const ContactForm = () => {
             onChange={(e) => onFormUpdate("message", e.target.value)}
           ></textarea>
         </div>
-        <button type="submit">{buttonText}</button>
-        {status.message && (
-          <div className="row">
-            <p className={status.success === false ? "danger" : "success"}>
+          <button type="submit">{buttonText}</button>
+            {status.message && (
+             <div className="row">
+               <p className={status.success === false ? "danger" : "success"}>
               {status.message}
-            </p>
-          </div>
+              </p>
+             </div>
         )}
-      </form>
-    </div>
+         </form>
+       </div>
+    </>
   );
 };
-
 export default ContactForm;
