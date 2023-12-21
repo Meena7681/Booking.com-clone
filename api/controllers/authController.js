@@ -1,7 +1,10 @@
-import User from "../models/User.js";
-import bcrypt from "bcryptjs";
-import { createError } from "../utils/error.js";
+import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
+
+import { createError } from "../utils/error.js";
+import User from "../models/userModel.js";
+
+
 
 export const register = async (req, res, next) => {
   try {
@@ -19,6 +22,8 @@ export const register = async (req, res, next) => {
     next(err);
   }
 };
+
+
 export const login = async (req, res, next) => {
   try {
     const user = await User.findOne({ username: req.body.username });
