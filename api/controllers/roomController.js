@@ -1,6 +1,8 @@
-import Room from "../models/Room.js";
-import Hotel from "../models/Hotel.js";
+import Room from "../models/roomModel.js";
+import Hotel from "../models/hotelModel.js";
 import { createError } from "../utils/error.js";
+
+
 
 export const createRoom = async (req, res, next) => {
   const hotelId = req.params.hotelid;
@@ -21,6 +23,7 @@ export const createRoom = async (req, res, next) => {
   }
 };
 
+
 export const updateRoom = async (req, res, next) => {
   try {
     const updatedRoom = await Room.findByIdAndUpdate(
@@ -33,6 +36,8 @@ export const updateRoom = async (req, res, next) => {
     next(err);
   }
 };
+
+
 export const updateRoomAvailability = async (req, res, next) => {
   try {
     await Room.updateOne(
@@ -48,6 +53,8 @@ export const updateRoomAvailability = async (req, res, next) => {
     next(err);
   }
 };
+
+
 export const deleteRoom = async (req, res, next) => {
   const hotelId = req.params.hotelid;
   try {
@@ -64,6 +71,8 @@ export const deleteRoom = async (req, res, next) => {
     next(err);
   }
 };
+
+
 export const getRoom = async (req, res, next) => {
   try {
     const room = await Room.findById(req.params.id);
@@ -72,6 +81,8 @@ export const getRoom = async (req, res, next) => {
     next(err);
   }
 };
+
+
 export const getRooms = async (req, res, next) => {
   try {
     const rooms = await Room.find();

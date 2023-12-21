@@ -1,10 +1,15 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import App from "./App";
-import { AuthContextProvider } from "./context/AuthContext";
-import { SearchContextProvider } from "./context/SearchContext";
+import reportWebVitals from './reportWebVitals.js';
 
-const root = ReactDOM.createRoot(document.getElementById("root"));
+import App from "./App.js";
+import { AuthContextProvider } from "./context/AuthContext.js";
+import { SearchContextProvider } from "./context/SearchContext.js";
+
+const root = ReactDOM.createRoot(document.getElementById('root'));
+
+
+
 root.render(
   <React.StrictMode>
     <AuthContextProvider>
@@ -14,3 +19,5 @@ root.render(
     </AuthContextProvider>
   </React.StrictMode>
 );
+
+reportWebVitals();
