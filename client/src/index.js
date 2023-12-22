@@ -6,9 +6,9 @@ import App from "./App.js";
 import { AuthContextProvider } from "./context/AuthContext.js";
 import { SearchContextProvider } from "./context/SearchContext.js";
 
+
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
-
-
 
 root.render(
   <React.StrictMode>
@@ -21,3 +21,9 @@ root.render(
 );
 
 reportWebVitals();
+
+
+// backend url present in
+// D: \booking.com - clone\client\src\components\featured\Featured.jsx
+// D: \booking.com - clone\client\src\components\propertyList\PropertyList.jsx
+// D: \booking.com - clone\client\src\components\featuredProperties\FeaturedProperties.jsx
