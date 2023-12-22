@@ -25,7 +25,7 @@ const NewHotel = () => {
     );
     setRooms(value);
   };
-  
+
   console.log(files)
 
   const handleClick = async (e) => {
@@ -52,8 +52,8 @@ const NewHotel = () => {
         photos: list,
       };
 
-      await axios.post("/hotels", newhotel);
-    } catch (err) {console.log(err)}
+      await axios.post("http://localhost:4000/hotels", newhotel);
+    } catch (err) { console.log(err) }
   };
   return (
     <div className="new">
@@ -113,11 +113,11 @@ const NewHotel = () => {
                   {loading
                     ? "loading"
                     : data &&
-                      data.map((room) => (
-                        <option key={room._id} value={room._id}>
-                          {room.title}
-                        </option>
-                      ))}
+                    data.map((room) => (
+                      <option key={room._id} value={room._id}>
+                        {room.title}
+                      </option>
+                    ))}
                 </select>
               </div>
               <button onClick={handleClick}>Send</button>
